@@ -1,0 +1,8 @@
+{
+  "name": "whatsapp-openai-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:lvidal1/whatsapp-openai-bot.git",
+  "author": "lvidal1 <lvidal910@gmail.com>",
+  "license": "MIT"
+}
