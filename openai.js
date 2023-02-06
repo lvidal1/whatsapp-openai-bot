@@ -1,6 +1,8 @@
+
+
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
-    apiKey: "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",
+    apiKey: process.env.OPENAI_APIKEY,
 });
 const openai = new OpenAIApi(configuration);
 
@@ -10,7 +12,7 @@ const getResponse = async (text) => {
             model: "text-davinci-003",
             prompt: text,
             temperature: 0,
-            max_tokens: 100,
+            max_tokens: 200,
         });
 
         return response.data.choices[0] ? response.data.choices[0].text : "None";

@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const qrcode = require('qrcode-terminal');
 const { Client, LocalAuth } = require('whatsapp-web.js');
 
@@ -12,6 +14,7 @@ const ACTION_TIP = "-tip";
 const ACTION_QUESTION = "-q";
 const ACTION_RESUME = "-sumup";
 const ACTION_THANKS = "-thanks";
+const ACTION_ALL = "-a";
 
 function greetingHourBased(persona) {
     const horaActual = new Date();
@@ -59,11 +62,29 @@ client.on('message_create', async (message) => {
         chat.sendMessage(response.trim())
     }
 
+    if (message.body.startsWith(ACTION_ALL)) {
+        var chat = await message.getChat()
+        const body = message.body.replace(ACTION_ALL, "")
+        chat.sendMessage("🔍 Buscando:")
+        const response = await getResponse(body)
+        chat.sendMessage("✴️ *Aquí tienes:*")
+        chat.sendMessage(response.trim())
+    }
+
     if (message.body.startsWith(ACTION_QUESTION)) {
         var chat = await message.getChat()
         const body = message.body.replace(ACTION_QUESTION, "")
         chat.sendMessage("🔍 Lo estoy pensando:")
-        const response = await getResponse(`${body}. Explica brevemente en menos de 30 palabras, y también dame una URL corta de búsqueda para seguir leyendo.`)
+        const response = await getResponse(`${body}. Explica brevemente en menos de 50 palabras.`)
+        chat.sendMessage("📖 *Ya lo tengo. Mira:*")
+        chat.sendMessage(response.trim())
+    }
+
+    if (message.body.startsWith(ACTION_QUESTION)) {
+        var chat = await message.getChat()
+        const body = message.body.replace(ACTION_QUESTION, "")
+        chat.sendMessage("🔍 Lo estoy pensando:")
+        const response = await getResponse(`${body}. Explica brevemente en menos de 50 palabras.`)
         chat.sendMessage("📖 *Ya lo tengo. Mira:*")
         chat.sendMessage(response.trim())
     }
