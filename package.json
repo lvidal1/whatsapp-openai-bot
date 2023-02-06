@@ -6,6 +6,7 @@
   "author": "lvidal1 <lvidal910@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "openai": "^3.1.0",
     "qrcode-terminal": "^0.12.0",
     "whatsapp-web.js": "^1.19.3"
   }
