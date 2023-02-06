@@ -34,6 +34,8 @@ client.on('loading_screen', (percent, message) => {
 });
 
 client.on('qr', (qr) => {
+    console.log("Code")
+    console.log(qr)
     qrcode.generate(qr, { small: true });
 });
 
