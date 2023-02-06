@@ -5,6 +5,9 @@
   "repository": "git@github.com:lvidal1/whatsapp-openai-bot.git",
   "author": "lvidal1 <lvidal910@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
     "openai": "^3.1.0",
     "qrcode-terminal": "^0.12.0",
